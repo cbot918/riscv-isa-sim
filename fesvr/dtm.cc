@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include <pthread.h>
 #include <stdexcept>
+#include <pthread.h>
 
 #define RV_X(x, s, n) \
   (((x) >> (s)) & ((1 << (n)) - 1))
@@ -482,7 +482,7 @@ uint32_t dtm_t::get_xlen()
 
   cmderr = run_abstract_command(command | AC_AR_SIZE(128), prog, 0, data, 0);
   if (cmderr == 0){
-    throw std::runtime_error("FESVR DTM Does not support 128-bit");
+    // throw std::runtime_error("FESVR DTM Does not support 128-bit");
     abort();
     return 128;
   }
@@ -499,7 +499,7 @@ uint32_t dtm_t::get_xlen()
     return 32;
   }
   
-  throw std::runtime_error("FESVR DTM can't determine XLEN. Aborting");
+  // throw std::runtime_error("FESVR DTM can't determine XLEN. Aborting");
 }
 
 void dtm_t::fence_i()
